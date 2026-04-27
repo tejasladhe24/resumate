@@ -5,6 +5,7 @@
 Resumate helps users tailor resumes to a target job description (JD).
 
 MVP goals:
+
 - User can authenticate, upload/paste resume + JD, trigger processing, and get:
   - parsed JD
   - parsed CV
@@ -15,6 +16,7 @@ MVP goals:
 - UI remains responsive and can poll/stream job status.
 
 Non-goals for MVP:
+
 - Full collaborative editor
 - Multi-template PDF rendering pipeline
 - Complex billing/metering
@@ -40,6 +42,7 @@ Non-goals for MVP:
   - local Postgres + MongoDB + Inngest dev server
 
 Design principle:
+
 - Keep request/response UX and auth in `web`.
 - Keep CPU/LLM/vector-heavy background work in `backend` via Inngest.
 
@@ -109,6 +112,7 @@ Design principle:
 ## 5) Inngest Workflow Design
 
 Current functions in `apps/backend/src/lib/inngest.ts`:
+
 - `jd-processing`
 - `cv-processing`
 - `match-processing` (currently duplicated trigger/id issue)
@@ -179,11 +183,13 @@ For MVP scalability and idempotency, use one parent orchestration event plus opt
 ### MongoDB documents
 
 Leverage the existing schemas:
+
 - `resumeSchema`
 - `jobDescriptionSchema`
 - `aiGeneratedResumeSchema`
 
 Recommended collection split:
+
 - `resumes` (raw + parsed original CV)
 - `job_descriptions` (raw + parsed JD)
 - `generated_resumes` (rewrites + old/new match analysis)
@@ -206,6 +212,7 @@ Owned by `apps/web` route handlers or `apps/backend` endpoints (choose one owner
   - retrigger from failed stage if retryable
 
 Auth:
+
 - Require authenticated/guest session from Better Auth.
 - Authorize by `user_id` ownership.
 
@@ -224,12 +231,14 @@ Auth:
 ## 9) Observability
 
 MVP telemetry to add immediately:
+
 - Correlation id = `requestId` across web logs, backend logs, and Inngest steps.
 - Stage duration metrics and fail counts.
 - Success rate and p95 end-to-end completion time.
 - Token/cost usage per generation (if LLM provider supports it).
 
 Operational dashboards:
+
 - Queue depth (queued vs running)
 - Failure reasons by stage
 - Average score delta (original -> generated)
