@@ -9,14 +9,14 @@ export const parseResume = inngest.createFunction(
     triggers: [
       eventType(EVENTS.PARSE_RESUME_REQUESTED, {
         schema: z.object({
-          resumeId: z.string(),
+          key: z.string(),
           userId: z.string(),
         }),
       }),
     ],
   },
   async ({ event, step }) => {
-    const { resumeId, userId } = event.data
+    const { key, userId } = event.data
 
     // 1. Fetch resume from DB
     const resume = await step.run("fetch-resume", async () => {
@@ -51,7 +51,11 @@ export const parseResume = inngest.createFunction(
     // 7. Emit parsed event
     await step.sendEvent("emit-resume-parsed", {
       name: EVENTS.RESUME_PARSED,
-      data: { resumeId, userId },
+      data: {
+        //  resumeId,  // TODO: add resumeId
+        key,
+        userId,
+      },
     })
   }
 )
@@ -111,7 +115,11 @@ export const generateResume = inngest.createFunction(
     // 8. Emit event
     await step.sendEvent("emit-resume-generated", {
       name: EVENTS.RESUME_GENERATED,
-      data: { jdId, resumeId: resume.id, userId },
+      data: {
+        //  resumeId: resume.id,  // TODO: add resumeId
+        userId,
+        jdId,
+      },
     })
   }
 )

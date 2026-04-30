@@ -53,6 +53,8 @@ services:
       - INNGEST_EVENT_KEY=${INNGEST_EVENT_KEY}
       - INNGEST_DEV=1
     command: ["inngest", "dev"]
+    networks:
+      - internal
     volumes:
       - inngest_data:/data
     restart: unless-stopped

@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1777270434481,
-      "tag": "0000_smart_korvac",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1777273734980,
-      "tag": "0001_equal_the_enforcers",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1777356361702,
-      "tag": "0002_sloppy_mandrill",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1777357075875,
-      "tag": "0003_fixed_cammi",
+      "when": 1777536924146,
+      "tag": "0000_plain_deathbird",
       "breakpoints": true
     }
   ]

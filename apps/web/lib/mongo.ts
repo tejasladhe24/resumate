@@ -1,4 +1,8 @@
 import { ResumeDAO, JobDescriptionDAO } from "@workspace/mongodb"
+import { env } from "@/env"
+import { MongoClient } from "mongodb"
 
-export const resumeDAO = new ResumeDAO()
-export const jobDescriptionDAO = new JobDescriptionDAO()
+const client = new MongoClient(env.MONGODB_URL)
+
+export const resumeDAO = new ResumeDAO(client)
+export const jobDescriptionDAO = new JobDescriptionDAO(client)

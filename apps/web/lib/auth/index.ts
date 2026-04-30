@@ -59,7 +59,7 @@ export const auth = betterAuth({
       httpOnly: true, // keep it safe from JS access
     },
   },
-  trustedOrigins: [env.SELF_URL, env.BACKEND_URL],
+  trustedOrigins: [env.SELF_URL],
 })
 
 function getJWKs() {

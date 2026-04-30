@@ -138,9 +138,8 @@ export const $resumeVersion = pgTable("resumeVersion", {
   requestId: text("requestId")
     .notNull()
     .references(() => $generationRequest.id, { onDelete: "cascade" }),
-  kind: text("kind").notNull(),
   mongoDocumentId: text("mongoDocumentId").notNull(),
-  scoreOverall: integer("scoreOverall").notNull(),
+  scoreOverall: integer("scoreOverall"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 })
 
