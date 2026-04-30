@@ -6,6 +6,7 @@ import { cn } from "@workspace/ui/lib/utils"
 import { DialogProvider } from "@workspace/ui/components/dialog"
 import { AuthProvider } from "@/components/auth-provider"
 import { Toaster } from "sonner"
+import "@/lib/storage"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 

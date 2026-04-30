@@ -12,13 +12,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1039.0",
     "@react-email/components": "^1.0.12",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@tanstack/react-form": "^1.29.1",
     "@workspace/mongodb": "workspace:*",
     "@workspace/pgdb": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "ai": "^6.0.169",
     "better-auth": "^1.6.9",
+    "chromadb": "^3.4.3",
     "inngest": "^4.2.4",
     "jose": "^6.2.2",
     "lucide-react": "^1.11.0",

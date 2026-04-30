@@ -1,19 +1,48 @@
+import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card"
 
-export default function Page() {
+export default async function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+    <div className="mx-auto flex w-full max-w-3xl min-w-0 flex-col gap-4">
+      <Card>
+        <CardHeader>
+          <CardTitle>Welcome to Resumate</CardTitle>
+          <CardDescription>
+            Build role-specific resumes from your profile and job descriptions.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-wrap gap-2">
+          <Button asChild>
+            <Link href="/profile">Complete profile</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href="/job-description">Add job description</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/resumes">View tailored resumes</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link href="/settings">Settings</Link>
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>How it works</CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          Upload your base resume, add a job description, and let AI generate
+          tailored bullet points to improve relevance for each role.
+        </CardContent>
+      </Card>
     </div>
   )
 }
